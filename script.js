@@ -1,14 +1,14 @@
 const canvas = document.querySelector('canvas')
 let ctx = canvas.getContext('2d')
-ctx.width = canvas.width
-ctx.height = canvas.height
+ctx.width = 400
+ctx.height = 400
 
 let tri = 'F-G-G'
 let incr = 1
 let angle = 0
-const length = 1
-let tx = 0
-let ty = 0
+const length = 10
+let tx = 10
+let ty = 10
 
 const rules = {
   F: 'F-G+F+G-F',
@@ -29,29 +29,31 @@ function render() {
       case '-':
         // right
         angle -= 120
-        ctx.rotate(angle * Math.PI / 180)
+        ctx.rotate(angle * (Math.PI / 180))
         break
       case '+':
         // left
         angle += 120
-        ctx.rotate(angle * Math.PI / 180)
+        ctx.rotate(angle * (Math.PI / 180))
         break
       default:
-        tx += length
-        ty += length
+        tx += incr
+        ty += incr
         
         ctx.lineTo(tx, ty)
         ctx.stroke()
         
-        tx = 0
-        ty = 0
         break
     }
+    
+    
   })
+  
+ // window.requestAnimationFrame(render)
 }
 
 init()
 ctx.beginPath()
-ctx.moveTo(0, 0)
+ctx.moveTo(10, 10)
 
 render()

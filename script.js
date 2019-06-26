@@ -4,7 +4,7 @@ ctx.width = canvas.width = 400
 ctx.height = canvas.height = 400
 
 let tri = 'F-G-G'
-let incr = 5
+let incr = 1
 let angle = 0
 const length = 1
 let tx = 0
@@ -16,11 +16,13 @@ const rules = {
 }
 
 function init() {
-  tri.split('').map(t => {
-    if (rules[t]) {
-      tri += rules[t]  
-    }
-  })
+  for (let i = 0; i < 5; i++) {
+    tri.split('').map(t => {
+      if (rules[t]) {
+        tri += rules[t]  
+      }
+    })
+  }
 }
 
 function render() {
@@ -29,22 +31,26 @@ function render() {
     switch (t) {
       case '-':
         // right
-        angle = 120
+        angle -= 120
+        ctx.translate(ctx.width, ctx.height)
         ctx.rotate(angle * (Math.PI / 180))
+      //  ctx.translate(-ctx.width, -ctx.height)
         break
       case '+':
         // left
-        angle = 120
+        angle += 120
+        ctx.translate(ctx.width, ctx.height)
         ctx.rotate(angle * (Math.PI / 180))
+       // ctx.translate(-ctx.width, -ctx.height)
         break
       case 'F':
       case 'G':
         tx += incr
         ty += incr
-      
+        
         ctx.lineTo(tx, ty)
         ctx.stroke()
-      
+        
         break
       default:
         break
@@ -57,7 +63,4 @@ function render() {
 }
 
 init()
-
-ctx.moveTo(0, 0)
-
 render()

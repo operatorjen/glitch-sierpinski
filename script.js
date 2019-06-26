@@ -7,8 +7,8 @@ let tri = 'F-G-G'
 let incr = 1
 let angle = 0
 const length = 1
-let tx = 0
-let ty = 0
+let tx = 100
+let ty = 300
 
 const rules = {
   F: 'F-G+F+G-F',
@@ -28,21 +28,20 @@ function init() {
 ctx.beginPath()
 
 function render() {
+  incr++
   tri.split('').map(t => {
     switch (t) {
       case '-':
         // right
-        angle -= incr
-        ctx.translate(tx, ty)
+        angle -= 120
+        ctx.translate(tx / 2, ty / 2)
         ctx.rotate(angle * (Math.PI / 180))
-        ctx.translate(-tx, -ty / 2)
         break
       case '+':
         // left
-        angle += incr
+        angle += 120
         ctx.translate(tx / 2, ty / 2)
-        ctx.rotate(angle * (Math.PI / 180))
-        ctx.translate(-tx / 2, -ty / 2)
+        ctx.rotate(angle * (Math.PI / 180))        
         break
       case 'F':
       case 'G':
@@ -51,6 +50,7 @@ function render() {
         
         ctx.lineTo(tx, ty)
         ctx.stroke()
+        ctx.setTranform(tx / 2, -ty / 2)
         
         break
       default:
@@ -58,7 +58,7 @@ function render() {
     }
   })
 
-  window.requestAnimationFrame(render)
+  //window.requestAnimationFrame(render)
 }
 
 init()

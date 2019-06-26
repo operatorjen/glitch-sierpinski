@@ -50,7 +50,7 @@ function render() {
         
         ctx.lineTo(tx, ty)
         ctx.stroke()
-        ctx.setTranform(tx / 2, -ty / 2)
+        ctx.setTransform(tx / 2, -ty / 2)
         
         break
       default:

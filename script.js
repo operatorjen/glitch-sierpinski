@@ -1,5 +1,23 @@
-/* If you're feeling fancy you can add interactivity 
-    to your site with Javascript */
+const canvas = document.querySelector('canvas')
+let ctx = canvas.getContext('2d')
+ctx.width = canvas.width
+ctx.height = canvas.height
 
-// prints "hi" in the browser's dev tools console
-console.log('hi');
+const tri = 'F-G-G'
+let incr = 1
+
+
+function init() {
+  tri = tri.split('').reduce((x, y) => {
+    x + y
+  })
+  
+  console.log(tri)
+}
+
+function render() {
+  
+  window.requestAnimationFrame(render)
+}
+
+init()

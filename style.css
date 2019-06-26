@@ -5,7 +5,8 @@ body {
   margin: 2em;
 }
 
-h1 {
-  font-style: italic;
-  color: #373fff;
+canvas {
+  border: 1px solid #f00;
+  width: 400px;
+  height: 400px;
 }

@@ -6,7 +6,7 @@ ctx.height = canvas.height
 let tri = 'F-G-G'
 let incr = 1
 let angle = 0
-const length = 100
+const length = 1
 let tx = 0
 let ty = 0
 
@@ -24,27 +24,29 @@ function init() {
 }
 
 function render() {
-  console.log(tri)
   tri.split('').map(t => {
     switch (t) {
       case '-':
         // right
         angle -= 120
-        ctx.rotate(angle)
+        ctx.rotate(angle * Math.PI / 180)
         break
       case '+':
         // left
         angle += 120
-        ctx.rotate(angle)
+        ctx.rotate(angle * Math.PI / 180)
         break
       default:
         tx += length
         ty += length
+        
+        ctx.lineTo(tx, ty)
+        ctx.stroke()
+        
+        tx = 0
+        ty = 0
         break
     }
-    
-    ctx.lineTo(tx, ty)
-    ctx.stroke()
   })
 }
 

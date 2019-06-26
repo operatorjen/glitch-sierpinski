@@ -2,11 +2,11 @@
 
 body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
-  margin: 2em;
+  margin: 0;
 }
 
 canvas {
   border: 1px solid #f00;
-  width: 400px;
-  height: 400px;
+  width: 100vw;
+  height: 100vh;
 }

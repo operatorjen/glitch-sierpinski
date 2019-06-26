@@ -3,12 +3,12 @@ let ctx = canvas.getContext('2d')
 ctx.width = canvas.width
 ctx.height = canvas.height
 
-let tri = ['F','-','G','-','G
+let tri = 'F-G-G'
 let incr = 1
 let angle = 0
-const length = 10
-let tx = window.innerWidth / 2
-let ty = window.innerHeight / 2
+const length = 100
+let tx = 0
+let ty = 0
 
 const rules = {
   F: 'F-G+F+G-F',
@@ -21,25 +21,35 @@ function init() {
       tri += rules[t]  
     }
   })
-  
-  console.log(tri)
 }
 
 function render() {
-  
-  switch (t) {
-    case '-':
-      // right
-      angle -= 120
-      break
-    case '+':
-      // left
-      angle += 120
-      break
-    default:
-      tx += length
-      ty += length
-  }
+  console.log(tri)
+  tri.split('').map(t => {
+    switch (t) {
+      case '-':
+        // right
+        angle -= 120
+        ctx.rotate(angle)
+        break
+      case '+':
+        // left
+        angle += 120
+        ctx.rotate(angle)
+        break
+      default:
+        tx += length
+        ty += length
+        break
+    }
+    
+    ctx.lineTo(tx, ty)
+    ctx.stroke()
+  })
 }
 
 init()
+ctx.beginPath()
+ctx.moveTo(0, 0)
+
+render()

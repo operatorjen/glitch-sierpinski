@@ -16,7 +16,7 @@ const rules = {
 }
 
 function init() {
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 3; i++) {
     tri.split('').map(t => {
       if (rules[t]) {
         tri += rules[t]  
@@ -25,23 +25,24 @@ function init() {
   }
 }
 
+ctx.beginPath()
+
 function render() {
-  ctx.beginPath()
   tri.split('').map(t => {
     switch (t) {
       case '-':
         // right
-        angle -= 120
-        ctx.translate(ctx.width, ctx.height)
+        angle -= incr
+        ctx.translate(tx, ty)
         ctx.rotate(angle * (Math.PI / 180))
-      //  ctx.translate(-ctx.width, -ctx.height)
+        ctx.translate(-tx, -ty / 2)
         break
       case '+':
         // left
-        angle += 120
-        ctx.translate(ctx.width, ctx.height)
+        angle += incr
+        ctx.translate(tx / 2, ty / 2)
         ctx.rotate(angle * (Math.PI / 180))
-       // ctx.translate(-ctx.width, -ctx.height)
+        ctx.translate(-tx / 2, -ty / 2)
         break
       case 'F':
       case 'G':
@@ -55,11 +56,9 @@ function render() {
       default:
         break
     }
-    
-    
   })
 
- //window.requestAnimationFrame(render)
+  window.requestAnimationFrame(render)
 }
 
 init()

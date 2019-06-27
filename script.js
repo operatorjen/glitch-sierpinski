@@ -4,7 +4,7 @@ ctx.width = canvas.width = 400
 ctx.height = canvas.height = 400
 
 let tri = 'F-G-G'
-let incr = 10
+let incr = 6
 let angle = 0
 const length = 1
 let tx = 100
@@ -47,7 +47,7 @@ function render() {
       default:
         tx += incr
         ty += incr
-        ctx.lineTo(Math.cos(tx) * 400, Math.sin(ty) * 400)
+        ctx.lineTo(tx, ty)
         ctx.stroke()
         break
     }

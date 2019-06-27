@@ -32,20 +32,19 @@ function render() {
       case '-':
         // right
         angle -= 120
-        ctx.translate(Math.cos(angle), Math.sin(angle))
+       // ctx.translate(Math.cos(angle), Math.sin(angle))
         ctx.rotate(angle * (Math.PI / 180))
-        ctx.translate(-Math.cos(angle), -Math.sin(angle))
         break
       case '+':
         // left
         angle += 120
-        ctx.translate(Math.cos(angle), Math.sin(angle))
+        
         ctx.rotate(angle * (Math.PI / 180))        
-        ctx.translate(-Math.cos(angle), -Math.sin(angle))
         break
       default:
-        tx += incr
-        ty += incr
+        tx = incr
+        ty = incr
+        ctx.translate(tx, ty)
         ctx.lineTo(tx, ty)
         ctx.stroke()
         tx = 150

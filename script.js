@@ -4,7 +4,7 @@ ctx.width = canvas.width = 400
 ctx.height = canvas.height = 400
 
 let tri = 'F-G-G'
-let incr = 1
+let incr = 10
 let angle = 0
 const length = 1
 let tx = 100
@@ -28,32 +28,27 @@ function init() {
 ctx.beginPath()
 
 function render() {
-  incr++
   tri.split('').map(t => {
     switch (t) {
       case '-':
         // right
         angle -= 120
-        ctx.translate(tx / 2, ty / 2)
+        ctx.translate(Math.cos(tx) * 400, Math.sin(ty) * 400)
         ctx.rotate(angle * (Math.PI / 180))
+        ctx.translate(-Math.cos(tx) * 400, -Math.sin(ty) * 400)
         break
       case '+':
         // left
         angle += 120
-        ctx.translate(tx / 2, ty / 2)
+        ctx.translate(Math.cos(tx) * 400, Math.sin(ty) * 400)
         ctx.rotate(angle * (Math.PI / 180))        
-        break
-      case 'F':
-      case 'G':
-        tx += incr
-        ty += incr
-        
-        ctx.lineTo(tx, ty)
-        ctx.stroke()
-        ctx.setTransform(tx / 2, -ty / 2)
-        
+        ctx.translate(-Math.cos(tx) * 400, -Math.sin(ty) * 400)
         break
       default:
+        tx += incr
+        ty += incr
+        ctx.lineTo(Math.cos(tx) * 400, Math.sin(ty) * 400)
+        ctx.stroke()
         break
     }
   })

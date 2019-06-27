@@ -8,7 +8,7 @@ let incr = 1
 let angle = 0
 const length = 1
 let tx = 100
-let ty = 300
+let ty = 100
 
 const rules = {
   F: 'F-G+F+G-F',

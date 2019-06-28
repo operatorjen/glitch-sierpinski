@@ -6,8 +6,8 @@ ctx.height = canvas.height = 400
 let tri = 'F-G-G'
 let incr = 10
 let angle = 0
-let tx = 10
-let ty = 10
+let tx = 5
+let ty = 5
 
 const rules = {
   F: 'F-G+F+G-F',
@@ -33,28 +33,27 @@ function render() {
         // right
         angle -= 120
         ctx.translate(tx, ty)
-        ctx.rotate(-angle * (Math.PI / 180))
-        ctx.translate(-tx, -ty)
+        ctx.rotate(angle * (Math.PI / 180))
+        ctx.translate(-tx, ty)
         break
       case '+':
         // left
         angle += 120
         ctx.translate(tx, ty)
         ctx.rotate(angle * (Math.PI / 180))
-        ctx.translate(-tx, -ty)
         break
       default:
-        angle = 120
+        angle = 0
         ctx.translate(tx, ty)
         ctx.rotate(angle * (Math.PI / 180))
-        ctx.lineTo(-tx, -ty)
+        ctx.lineTo(tx, ty)
         ctx.stroke()
-        //ctx.translate(tx, ty)
         break
     }
   })
 }
 
 init()
-ctx.moveTo(50, 50)
+ctx.translate(150, 200)
+ctx.moveTo(0, 0)
 render()

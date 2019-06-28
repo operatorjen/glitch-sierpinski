@@ -34,22 +34,22 @@ function render() {
         angle -= 120
         ctx.translate(tx, ty)
         ctx.rotate(-angle * (Math.PI / 180))
-        //ctx.translate(-tx, -ty)
+        ctx.translate(-tx, -ty)
         break
       case '+':
         // left
         angle += 120
         ctx.translate(tx, ty)
         ctx.rotate(angle * (Math.PI / 180))
-        //ctx.translate(-tx, -ty)
+        ctx.translate(-tx, -ty)
         break
       default:
         angle = 120
         ctx.translate(tx, ty)
         ctx.rotate(angle * (Math.PI / 180))
-        ctx.lineTo(tx, ty)
+        ctx.lineTo(-tx, -ty)
         ctx.stroke()
-        ctx.translate(-tx, -ty)
+        //ctx.translate(tx, ty)
         break
     }
   })

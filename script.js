@@ -18,6 +18,8 @@ function init() {
     tri.split('').map(t => {
       if (rules[t]) {
         tri += rules[t]  
+      } else {
+        tri += t
       }
     })
   }
@@ -52,6 +54,6 @@ function render() {
 }
 
 init()
-ctx.translate(150, 200)
+ctx.translate(10, 20)
 ctx.moveTo(0, 0)
 render()

@@ -14,7 +14,7 @@ const rules = {
 }
 
 function init() {
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 3; i++) {
     tri.split('').map(t => {
       if (rules[t]) {
         tri += rules[t]  

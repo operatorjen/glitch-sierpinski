@@ -5,33 +5,36 @@ ctx.height = canvas.height = window.innerHeight
 
 let tri = ['F','-','G','-','G']
 let angle = 0
-let tx = 30
-let ty = 30
+let tx = 10
+let ty = 10
 
 const rules = {
   F: ['F','-','G','+','F','+','G','-','F'],
   G: ['G','G']
 }
 
+let switched = false
+const max = 1000
+let counter = 0
+
 function getNext() {
-  if (tri.length < max) {
-    if (rules[tri[0]]) {
-      tri = tri.concat(rules[tri[0]])
-    } else {
-      tri = tri.concat(tri[0])
+  if (counter < max) {
+    if (tri.length) {
+      if (rules[tri[0]]) {
+        tri = tri.concat(rules[tri[0]])
+      } else {
+        tri = tri.concat(tri[0])
+      }
+      plot(tri[0])
+      tri.shift()
     }
-    plot(tri[0])
-    tri.shift()
+
+    counter++
   }
-  
-  console.log(tri.length)
 }
 
-ctx.strokeStyle = 'rgba(20, 200, 230, 0.01)'
+ctx.strokeStyle = 'rgba(20, 200, 230, 0.9)'
 ctx.lineWidth = 3
-
-let counter = 0
-const max = 3000
 
 function plot(t) {
   switch (t) {

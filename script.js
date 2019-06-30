@@ -5,8 +5,8 @@ ctx.height = canvas.height = window.innerHeight
 
 let tri = ['F','-','G','-','G']
 let angle = 0
-let tx = 10
-let ty = 10
+let tx = 50
+let ty = 50
 
 const rules = {
   F: ['F','-','G','+','F','+','G','-','F'],
@@ -14,7 +14,7 @@ const rules = {
 }
 
 let switched = false
-const max = 1000
+const max = 2000
 let counter = 0
 
 function getNext() {
@@ -56,7 +56,7 @@ function plot(t) {
     case '+':
       // left
       angle += 120
-      //ctx.translate(tx, ty)
+      ctx.translate(tx, ty)
       ctx.rotate(angle * (Math.PI / 180))
       break
   }

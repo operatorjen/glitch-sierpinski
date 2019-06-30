@@ -3,6 +3,7 @@
 body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
   margin: 0;
+  background-color: rgb(230, 70, 70);
 }
 
 canvas {

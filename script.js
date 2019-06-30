@@ -20,11 +20,17 @@ function getNext() {
     tri = tri.concat(tri[0])
   }
   
-  plot(tri[0])
-  tri.shift()
+  if (tri.length) {
+    plot(tri[0])
+    tri.shift()
+  }
 }
 
-ctx.strokeStyle = 'rgba(20, 200, 230, 0.01)'
+ctx.strokeStyle = 'rgba(20, 200, 230, 0.5)'
+ctx.lineWidth = 5
+
+let counter = 0
+const max = 20
 
 function plot(t) {
   switch (t) {
@@ -37,11 +43,11 @@ function plot(t) {
     case '+':
       // left
       angle += 120
-      //ctx.translate(tx, ty)
+      ctx.translate(tx, ty)
       ctx.rotate(-angle * (Math.PI / 180))
       break
     default:
-      angle = 120
+      angle = 0
       ctx.translate(tx, ty)
       ctx.rotate(angle * (Math.PI / 180))
       ctx.lineTo(tx, ty)
@@ -55,8 +61,11 @@ ctx.beginPath()
 function render() {
   getNext()
   window.requestAnimationFrame(render)
+  if (counter < max) {
+    counter++
+  }
 }
 
-ctx.translate(110, 20)
+ctx.translate(ctx.width / 2, ctx.height / 2)
 ctx.moveTo(0, 0)
 render()

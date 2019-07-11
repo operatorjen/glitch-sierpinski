@@ -33,7 +33,7 @@ function getNext() {
   }
 }
 
-ctx.strokeStyle = 'rgba(20, 200, 230, 0.9)'
+ctx.strokeStyle = 'rgba(20, 200, 230, 0.09)'
 ctx.lineWidth = 3
 
 function plot(t) {
